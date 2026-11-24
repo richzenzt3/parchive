@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Downloading From Sites</title>
+</head>
+<body>
+  <a href="../index.html" target="_self">← Return</a>
+  <br>
+  <h1>Downloading From Sites</h1>
+  
+  <p>
+    If you want to improve your browser experience (remove Ads, Pop-ups, etc.), besides making some methods easier,
+    I recommend using the <a href="http://ublockorigin.com" target="_blank" rel="noopener noreferrer">UBlock Origin Extension</a>
+    or a Browser that does this by default (like <a href="http://brave.com" target="_blank" rel="noopener noreferrer">Brave</a>).
+  </p>
+  <p>
+    In different sites you'll come across diferent formats. Some of them you can download directly with the browser (like ".mp4"), and some you can't
+    (like ".m3u8"); you'll have to test each case to see if you're able to download. In the cases you can't download directly, you can use tools
+    like yt-dlp (you can search to see how you can install them). The focus here will be how to get the URL of the video you want to download. Nedless
+    to say that you don't need to do this in case a specific site don't block downloads. THIS TUTORIAL WILL BE UPDATED WHEN A SITE CHANGES, IF
+    SOME METHODS AREN'T WORKING OR YOU KNOW MISSING METHODS LET ME KNOW SO WE CAN IMPROVE THE TUTORIAL.
+  </p>
+  <ul>
+    <li><a href="https://pmvhaven.com" target="_blank" rel="noopener noreferrer"><strong>PMVHaven (tested 2026-09)</strong></a>
+        <ul>
+            <li>
+                <strong>METHOD1 (HTTP):</strong> Right Click -> Inspect -> Network, go to the video you want, select the XHR row named "master.m3u8",
+                and go to Headers -> General -> Request URL (something like
+                "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net/videos/[uploader-name]-[video-name]-[...].mp4/master.m3u8"). You can also replace "master" by any resolution available (you can manually
+                type, or change the resolution in site and it will appear XHR rows named "1080p.m3u8", "720p.m3u8", etc.). It also works if you remove "/master.m3u8".
+            </li>
+            -> Example (URL="https://pmvhaven.com/video/are-u-ready_6a016576c65462c71cac5097"): the URLs are "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net/videos/wezzam_-_are_u_ready_1778476406313_1mtlg09u.mp4/master.m3u8" (first one to appear),
+            "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net/videos/wezzam_-_are_u_ready_1778476406313_1mtlg09u.mp4/1080p.m3u8", "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net/videos/wezzam_-_are_u_ready_1778476406313_1mtlg09u.mp4/720p.m3u8",
+            "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net/videos/wezzam_-_are_u_ready_1778476406313_1mtlg09u.mp4/480p.m3u8", "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net/videos/wezzam_-_are_u_ready_1778476406313_1mtlg09u.mp4/360p.m3u8" and
+            "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net/videos/wezzam_-_are_u_ready_1778476406313_1mtlg09u.mp4".
+            
+            <li>
+                <strong>METHOD2 (HTML):</strong> Go to the video you want to download, Right Click -> View Page Source -> Control + F (search for terms like "contentURL" and ".mp4"). What you'll find is something like
+                "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net/videos/[uploader-name]-[video-name]-[...].mp4/master.m3u8" or something like
+                "videos\u002F[uploader-name]-[video-name]-[...].mp4" (add at the beginning the missing "https://pmvhavencloud.s3.eu-west-par.io.cloud.ovh.net" and replace every "\u002F" by "/").
+            </li>
+            -> Example (URL="https://pmvhaven.com/video/are-u-ready_6a016576c65462c71cac5097"): no example needed as URLs are the same as last example.
+
+            <li>
+                <strong>METHOD3 (unlocking the link without account):</strong> Copy the URL of the video you want to download (it should be something like https://pmvhaven.com/video/[video-name]_[video-id]).
+                Copy the video-id and put it in the URL "https://pmvhaven.com/api/videos/[video-id]/download".
+            </li>
+            -> Example (URL="https://pmvhaven.com/video/are-u-ready_6a016576c65462c71cac5097"): video-id is "6a016576c65462c71cac5097", we get the URL "https://pmvhaven.com/api/videos/6a016576c65462c71cac5097/download"
+        </ul>
+    </li>
+
+    <li>
+        <a href="https://faptap.net" target="_blank" rel="noopener noreferrer"><strong>FapTap (tested 2026-09)</strong></a>
+        <ul>
+            <li>
+                <strong>METHOD1 (HTTP, doesn't work with every video):</strong> Right Click -> Inspect -> Network, open the video you want to watch, select the XHR row named "master.m3u8",
+                and go to Headers -> General -> Request URL (something like "https://vz-3d77bc0a-a87.b-cdn.net/.../[resolution]/video.m3u8").
+                We can replace "[resolution]" with any other resolution available (or just change the video and it will appear another XHR also named "video.m3u8", but with the desired resolution)
+                We can also replace "[resolution]/video.m3u8" with "master.m3u8".
+            </li>
+            -> Example (URL="https://faptap.net/v/2100317066639708161", only works with this method): the URLs are "https://vz-3d77bc0a-a87.b-cdn.net/b88452bd-6178-42b4-90c4-bd56775546e3/1080p/video.m3u8" (first one to appear),
+            "https://vz-3d77bc0a-a87.b-cdn.net/b88452bd-6178-42b4-90c4-bd56775546e3/720p/video.m3u8", "https://vz-3d77bc0a-a87.b-cdn.net/b88452bd-6178-42b4-90c4-bd56775546e3/480p/video.m3u8",
+            "https://vz-3d77bc0a-a87.b-cdn.net/b88452bd-6178-42b4-90c4-bd56775546e3/360p/video.m3u8", "https://vz-3d77bc0a-a87.b-cdn.net/b88452bd-6178-42b4-90c4-bd56775546e3/240p/video.m3u8" and
+            "https://vz-3d77bc0a-a87.b-cdn.net/b88452bd-6178-42b4-90c4-bd56775546e3/master.m3u8"
+            <li>
+                <strong>METHOD2 (HTML, doesn't work with every video):</strong> Go to the video you want to download, Right Click -> View Page Source -> Control + F (search for terms like "content" and "vz").
+                What you'll find is something similtar to "https://vz-3d77bc0a-a87.b-cdn.net/.../thumbnail.jpg". Now we need to replace "thumbnail.jpg" with "master.m3u8" or with "[resolution]/master.m3u8".
+            </li>
+            -> Example (...)
+        </ul>
+    </li>
+
+    <li>
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer"><strong>X (tested 2026-09):</strong></a> Right Click -> Inspect -> Network -> Order by Type (we want only XHR), open the video you want to watch,
+        select the XHR row which doesn't have video-only and audio-only formats [avc1, mp4a, etc.], that will contain both. For instance, i found for a specific video the videos-only
+        480p ("https://video.twimg.com/amplify_video/.../pl/avc1/852x480/...m3u8"), 720p ("https://video.twimg.com/amplify_video/.../pl/avc1/1280x720/...m3u8") and
+        1440p ("https://video.twimg.com/amplify_video/.../pl/avc1/2560x1440/...m3u8"); there's also the audios "https://video.twimg.com/amplify_video/.../pl/mp4a/...m3u8";
+        What you'll need is the one that has all of them ("https://video.twimg.com/amplify_video/.../pl/...m3u8"). By default yt-dlp will mix the best audio with the best video.
+    </li>
+    <li>
+        <a href="https://pornhub.com/" target="_blank" rel="noopener noreferrer"><strong>Pornhub (...):</strong></a> soon...
+    </li>
+  </ul>
+</body>
+</html>
